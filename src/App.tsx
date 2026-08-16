@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SpaceBackground from "./SpaceBackground";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const skills = [
   "React",
@@ -42,20 +45,31 @@ const projects = [
 export default function App() {
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const timeline = gsap.timeline();
+      /* HERO */
 
-      timeline
+      const heroTimeline = gsap.timeline();
+
+      heroTimeline
         .from(".mission-label", {
           opacity: 0,
           y: 20,
           duration: 0.5,
         })
         .from(
+          ".eyebrow",
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.5,
+          },
+          "-=.2"
+        )
+        .from(
           ".hero-title span",
           {
             opacity: 0,
-            y: 80,
-            stagger: 0.12,
+            y: 100,
+            stagger: 0.1,
             duration: 0.8,
             ease: "power3.out",
           },
@@ -74,25 +88,132 @@ export default function App() {
           ".mission-data",
           {
             opacity: 0,
-            x: -15,
+            x: -20,
             duration: 0.5,
           },
           "-=.2"
         );
 
+      /* SECTION LABELS */
+
+      gsap.utils.toArray<HTMLElement>(".section").forEach((section) => {
+        gsap.from(section.querySelector(".label"), {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            once: true,
+          },
+          opacity: 0,
+          x: -30,
+          duration: 0.7,
+          ease: "power2.out",
+        });
+      });
+
+      /* ABOUT */
+
+      gsap.from(".aboutgrid", {
+        scrollTrigger: {
+          trigger: ".aboutgrid",
+          start: "top 80%",
+          once: true,
+        },
+        opacity: 0,
+        y: 60,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      /* PROJECTS */
+
+      gsap.utils.toArray<HTMLElement>(".project").forEach((project, index) => {
+        gsap.from(project, {
+          scrollTrigger: {
+            trigger: project,
+            start: "top 85%",
+            once: true,
+          },
+          opacity: 0,
+          y: 70,
+          duration: 0.8,
+          delay: index * 0.08,
+          ease: "power3.out",
+        });
+      });
+
+      /* SKILLS */
+
+      gsap.utils.toArray<HTMLElement>(".skills div").forEach((skill, index) => {
+        gsap.from(skill, {
+          scrollTrigger: {
+            trigger: skill,
+            start: "top 90%",
+            once: true,
+          },
+          opacity: 0,
+          x: -40,
+          duration: 0.6,
+          delay: index * 0.04,
+          ease: "power2.out",
+        });
+      });
+
+      /* CONTACT */
+
+      gsap.from(".contact h2", {
+        scrollTrigger: {
+          trigger: ".contact",
+          start: "top 70%",
+          once: true,
+        },
+        opacity: 0,
+        y: 80,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      gsap.from(".email, .social", {
+        scrollTrigger: {
+          trigger: ".contact",
+          start: "top 65%",
+          once: true,
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.7,
+        stagger: 0.15,
+        ease: "power2.out",
+      });
+
+      /* ORBIT */
+
       gsap.to(".orbit-ring", {
         rotation: 360,
-        duration: 30,
+        duration: 12,
         repeat: -1,
         ease: "none",
       });
 
       gsap.to(".orbit-ring.reverse", {
         rotation: -360,
-        duration: 42,
+        duration: 17,
         repeat: -1,
         ease: "none",
       });
+
+      /* PLANET */
+
+      gsap.to(".planet", {
+        scale: 1.2,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      /* REFRESH SCROLL TRIGGERS */
+
+      ScrollTrigger.refresh();
     });
 
     return () => ctx.revert();
@@ -119,6 +240,7 @@ export default function App() {
 
       <main>
         {/* HERO */}
+
         <section className="hero">
           <div className="mission-label">
             <span className="live-dot" />
@@ -170,6 +292,7 @@ export default function App() {
         </section>
 
         {/* ABOUT */}
+
         <section id="about" className="section">
           <p className="label">01 — MISSION PROFILE</p>
 
@@ -196,6 +319,7 @@ export default function App() {
         </section>
 
         {/* PROJECTS */}
+
         <section id="work" className="section">
           <p className="label">02 — SELECTED MISSIONS</p>
 
@@ -221,6 +345,7 @@ export default function App() {
         </section>
 
         {/* SKILLS */}
+
         <section id="skills" className="section">
           <p className="label">03 — SYSTEM CAPABILITIES</p>
 
@@ -239,6 +364,7 @@ export default function App() {
         </section>
 
         {/* CONTACT */}
+
         <section id="contact" className="contact">
           <p className="label">04 — COMMUNICATION CHANNEL</p>
 
@@ -248,10 +374,7 @@ export default function App() {
             <em>launch.</em>
           </h2>
 
-          <a
-            className="email"
-            href="mailto:sanket.methe@example.com"
-          >
+          <a className="email" href="mailto:sanket.methe@example.com">
             sanket.methe@example.com ↗
           </a>
 
