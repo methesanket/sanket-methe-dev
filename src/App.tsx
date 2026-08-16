@@ -1,3 +1,6 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
 const skills = [
   "React",
   "JavaScript",
@@ -36,8 +39,69 @@ const projects = [
 ];
 
 export default function App() {
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".hero-kicker", {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      gsap.from(".hero-title span", {
+        y: 120,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 1.3,
+        ease: "power4.out",
+        delay: 0.15,
+      });
+
+      gsap.from(".hero-description", {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.7,
+        ease: "power3.out",
+      });
+
+      gsap.from(".hero-arrow", {
+        scale: 0,
+        opacity: 0,
+        duration: 0.8,
+        delay: 1,
+        ease: "back.out(1.7)",
+      });
+
+      gsap.to(".orb1", {
+        x: 80,
+        y: -40,
+        duration: 6,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      gsap.to(".orb2", {
+        x: -60,
+        y: 50,
+        duration: 8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="site">
+    <div className="site" ref={heroRef}>
+      <div className="stars" />
+      <div className="grid-glow" />
+
       <nav>
         <a className="logo" href="#">
           SM<span>.</span>
@@ -56,8 +120,10 @@ export default function App() {
           <div className="orb orb1" />
           <div className="orb orb2" />
 
+          <div className="hero-line" />
+
           <p className="hero-kicker">
-            FULL STACK DEVELOPER · BSC IT · 2026
+            FULL STACK DEVELOPER <span>·</span> BSC IT <span>·</span> 2026
           </p>
 
           <h1 className="hero-title">
@@ -66,13 +132,18 @@ export default function App() {
           </h1>
 
           <div className="hero-bottom">
-            <p>
+            <p className="hero-description">
               Building digital experiences that feel <i>alive.</i>
             </p>
 
-            <a className="circle" href="#work">
+            <a className="circle hero-arrow" href="#work">
               ↓
             </a>
+          </div>
+
+          <div className="hero-status">
+            <span className="status-dot" />
+            AVAILABLE FOR OPPORTUNITIES
           </div>
         </section>
 
@@ -106,7 +177,7 @@ export default function App() {
 
           {projects.map((project) => (
             <article className="project" key={project.number}>
-              <span>{project.number}</span>
+              <span className="project-number">{project.number}</span>
 
               <div>
                 <h3>{project.title}</h3>
@@ -184,7 +255,7 @@ export default function App() {
 
       <footer>
         <span>© 2026 Sanket Methe</span>
-        <span>Designed & built with intention.</span>
+        <span>DESIGNED & BUILT WITH INTENTION</span>
       </footer>
     </div>
   );
