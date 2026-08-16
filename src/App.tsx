@@ -22,24 +22,27 @@ const skills = [
 const projects = [
   {
     number: "01",
-    title: "Client Web Experiences",
+    title: "Mirror Salon Studio",
     description:
-      "Responsive and modern websites built for real clients with practical integrations and polished user experiences.",
-    tags: ["React", "UI/UX", "Web Development"],
+      "A premium responsive salon website designed with modern UI, service presentation, location information and customer-focused experience.",
+    tags: ["Web Development", "UI/UX", "Responsive"],
+    link: "https://pratik-salon-studio.emergent.host",
   },
   {
     number: "02",
-    title: "AI-Powered Daily Assistant",
+    title: "Image Salon",
     description:
-      "A real-time web application concept designed to help people solve everyday problems using AI.",
-    tags: ["AI", "Web App", "Real-time"],
+      "A modern salon website experience focused on visual presentation, services, contact information and a polished mobile-friendly interface.",
+    tags: ["React", "UI/UX", "Web Design"],
+    link: "https://imagesalon.lovable.app",
   },
   {
     number: "03",
     title: "Developer Portfolio",
     description:
-      "A cinematic developer portfolio designed around motion, interaction, depth and responsive experiences.",
-    tags: ["TypeScript", "GSAP", "Three.js"],
+      "A cinematic developer portfolio built around interactive space visuals, responsive design, GSAP motion and a NASA-inspired mission interface.",
+    tags: ["TypeScript", "GSAP", "Creative UI"],
+    link: "https://methesanket.github.io/sanket-methe-dev/",
   },
 ];
 
@@ -94,17 +97,21 @@ export default function App() {
         );
 
       gsap.utils.toArray<HTMLElement>(".section").forEach((section) => {
-        gsap.from(section.querySelector(".label"), {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            once: true,
-          },
-          opacity: 0,
-          x: -30,
-          duration: 0.7,
-          ease: "power2.out",
-        });
+        const label = section.querySelector(".label");
+
+        if (label) {
+          gsap.from(label, {
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              once: true,
+            },
+            opacity: 0,
+            x: -30,
+            duration: 0.7,
+            ease: "power2.out",
+          });
+        }
       });
 
       gsap.from(".aboutgrid", {
@@ -257,12 +264,12 @@ export default function App() {
             <div className="mission-data">
               <div>
                 <span>STATUS</span>
-                <strong>ONLINE</strong>
+                <strong>AVAILABLE</strong>
               </div>
 
               <div>
-                <span>LOCATION</span>
-                <strong>INDIA</strong>
+                <span>EDUCATION</span>
+                <strong>BSC IT</strong>
               </div>
 
               <div>
@@ -289,16 +296,22 @@ export default function App() {
 
               <div>
                 <p>
-                  I'm Sanket Methe, a BSc IT student and aspiring developer
-                  focused on full-stack web development, software testing and
-                  practical technology.
+                  I'm Sanket Methe, a BSc IT graduate from Pillai University
+                  with a focus on full-stack web development, software testing,
+                  AI/ML and practical technology.
                 </p>
 
                 <p>
-                  I've built websites for clients and completed a Full Stack
-                  Development internship with Prodigy. I'm currently looking
-                  for opportunities where I can learn fast, solve problems and
-                  build things that matter.
+                  I completed a Full Stack Development internship with
+                  Prodigy and have built responsive websites for clients.
+                  I enjoy turning ideas into functional, modern and
+                  user-focused digital experiences.
+                </p>
+
+                <p>
+                  I'm currently looking for opportunities where I can learn
+                  quickly, solve real problems and contribute to meaningful
+                  technology projects.
                 </p>
               </div>
             </div>
@@ -310,8 +323,16 @@ export default function App() {
             <p className="label">02 — SELECTED MISSIONS</p>
 
             {projects.map((project) => (
-              <article className="project" key={project.number}>
-                <span className="project-number">{project.number}</span>
+              <a
+                className="project"
+                key={project.number}
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="project-number">
+                  {project.number}
+                </span>
 
                 <div>
                   <h3>{project.title}</h3>
@@ -326,7 +347,7 @@ export default function App() {
                 </div>
 
                 <span className="arrow">↗</span>
-              </article>
+              </a>
             ))}
           </section>
 
@@ -342,30 +363,62 @@ export default function App() {
             <div className="skills">
               {skills.map((skill, index) => (
                 <div key={skill}>
-                  <small>{String(index + 1).padStart(2, "0")}</small>
+                  <small>
+                    {String(index + 1).padStart(2, "0")}
+                  </small>
+
                   {skill}
                 </div>
               ))}
             </div>
           </section>
 
+          {/* EXPERIENCE */}
+
+          <section className="section">
+            <p className="label">04 — EXPERIENCE</p>
+
+            <div className="aboutgrid">
+              <h2>
+                Learning by <em>building.</em>
+              </h2>
+
+              <div>
+                <p>
+                  <strong>Full Stack Development Intern</strong>
+                </p>
+
+                <p>
+                  Prodigy InfoTech — Full Stack Development Internship.
+                </p>
+
+                <p>
+                  Worked on practical web development projects while
+                  strengthening frontend, backend and development workflow
+                  skills.
+                </p>
+
+                <p>
+                  <strong>Certification</strong>
+                </p>
+
+                <p>
+                  Full Stack Web Development
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* CONTACT */}
 
           <section id="contact" className="contact">
-            <p className="label">04 — COMMUNICATION CHANNEL</p>
+            <p className="label">05 — COMMUNICATION CHANNEL</p>
 
             <h2>
-              Ready for
+              Let's build
               <br />
-              <em>launch.</em>
+              <em>something.</em>
             </h2>
-
-            <a
-              className="email"
-              href="mailto:sanket.methe@example.com"
-            >
-              sanket.methe@example.com ↗
-            </a>
 
             <div className="social">
               <a
@@ -373,25 +426,26 @@ export default function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub
+                GitHub ↗
               </a>
 
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/Sanketmethe"
                 target="_blank"
                 rel="noreferrer"
               >
-                LinkedIn
+                LinkedIn ↗
               </a>
-
-              <a href="#">Resume</a>
             </div>
           </section>
         </main>
 
         <footer>
           <span>© 2026 SANKET METHE</span>
-          <span>SYSTEM ONLINE · ALL SYSTEMS NOMINAL</span>
+
+          <span>
+            SYSTEM ONLINE · ALL SYSTEMS NOMINAL
+          </span>
         </footer>
       </div>
     </>
