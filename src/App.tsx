@@ -48,16 +48,16 @@ export default function App() {
         .from(".mission-label", {
           opacity: 0,
           y: 20,
-          duration: 0.6,
+          duration: 0.5,
         })
         .from(
           ".hero-title span",
           {
             opacity: 0,
-            y: 100,
+            y: 80,
             stagger: 0.12,
-            duration: 1,
-            ease: "power4.out",
+            duration: 0.8,
+            ease: "power3.out",
           },
           "-=.2"
         )
@@ -66,18 +66,18 @@ export default function App() {
           {
             opacity: 0,
             y: 20,
-            duration: 0.7,
+            duration: 0.5,
           },
-          "-=.4"
+          "-=.3"
         )
         .from(
           ".mission-data",
           {
             opacity: 0,
-            x: -20,
-            duration: 0.6,
+            x: -15,
+            duration: 0.5,
           },
-          "-=.3"
+          "-=.2"
         );
 
       gsap.to(".orbit-ring", {
@@ -118,6 +118,7 @@ export default function App() {
       </nav>
 
       <main>
+        {/* HERO */}
         <section className="hero">
           <div className="mission-label">
             <span className="live-dot" />
@@ -141,8 +142,7 @@ export default function App() {
             </h1>
 
             <p className="hero-subtitle">
-              Building digital experiences that feel{" "}
-              <em>alive.</em>
+              Building digital experiences that feel <em>alive.</em>
             </p>
           </div>
 
@@ -169,40 +169,39 @@ export default function App() {
           </a>
         </section>
 
+        {/* ABOUT */}
         <section id="about" className="section">
           <p className="label">01 — MISSION PROFILE</p>
 
           <div className="aboutgrid">
             <h2>
-              Turning ideas into{" "}
-              <em>useful</em> digital experiences.
+              Turning ideas into <em>useful</em> digital experiences.
             </h2>
 
             <div>
               <p>
-                I'm Sanket Methe, a BSc IT student and aspiring
-                developer focused on full-stack web development,
-                software testing and practical technology.
+                I'm Sanket Methe, a BSc IT student and aspiring developer
+                focused on full-stack web development, software testing and
+                practical technology.
               </p>
 
               <p>
-                I've built websites for clients and completed a Full
-                Stack Development internship with Prodigy. I'm
-                currently looking for opportunities where I can learn
-                fast, solve problems and build things that matter.
+                I've built websites for clients and completed a Full Stack
+                Development internship with Prodigy. I'm currently looking
+                for opportunities where I can learn fast, solve problems and
+                build things that matter.
               </p>
             </div>
           </div>
         </section>
 
+        {/* PROJECTS */}
         <section id="work" className="section">
           <p className="label">02 — SELECTED MISSIONS</p>
 
           {projects.map((project) => (
             <article className="project" key={project.number}>
-              <span className="project-number">
-                {project.number}
-              </span>
+              <span className="project-number">{project.number}</span>
 
               <div>
                 <h3>{project.title}</h3>
@@ -221,26 +220,25 @@ export default function App() {
           ))}
         </section>
 
+        {/* SKILLS */}
         <section id="skills" className="section">
           <p className="label">03 — SYSTEM CAPABILITIES</p>
 
           <h2 className="big">
-            Technologies I use to{" "}
-            <em>build.</em>
+            Technologies I use to <em>build.</em>
           </h2>
 
           <div className="skills">
             {skills.map((skill, index) => (
               <div key={skill}>
-                <small>
-                  {String(index + 1).padStart(2, "0")}
-                </small>
+                <small>{String(index + 1).padStart(2, "0")}</small>
                 {skill}
               </div>
             ))}
           </div>
         </section>
 
+        {/* CONTACT */}
         <section id="contact" className="contact">
           <p className="label">04 — COMMUNICATION CHANNEL</p>
 
