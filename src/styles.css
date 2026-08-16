@@ -10,7 +10,7 @@ html {
 
 body {
   margin: 0;
-  background: #080808;
+  background: #050505;
   color: #f3f1eb;
   font-family: "Manrope", Arial, sans-serif;
 }
@@ -22,9 +22,47 @@ a {
 .site {
   min-height: 100vh;
   overflow: hidden;
+  position: relative;
   background:
-    radial-gradient(circle at 80% 20%, rgba(140, 255, 50, 0.08), transparent 25%),
-    #080808;
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(170, 255, 70, 0.08),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 15% 80%,
+      rgba(70, 100, 255, 0.07),
+      transparent 25%
+    ),
+    #050505;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px);
+  background-size: 140px 140px, 220px 220px;
+  background-position: 20px 30px, 90px 80px;
+  z-index: 0;
+}
+
+.grid-glow {
+  position: absolute;
+  width: 100%;
+  height: 700px;
+  left: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image:
+    linear-gradient(rgba(255,255,255,.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.2) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: linear-gradient(to bottom, transparent, black);
 }
 
 nav {
@@ -32,7 +70,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 20;
 
   padding: 30px 5vw;
 
@@ -44,7 +82,6 @@ nav {
 .logo {
   color: #fff;
   text-decoration: none;
-
   font-size: 25px;
   font-weight: 800;
   letter-spacing: -0.05em;
@@ -60,7 +97,7 @@ nav {
 }
 
 .navlinks a {
-  color: #999;
+  color: #888;
   text-decoration: none;
 
   font-family: "DM Mono", monospace;
@@ -68,18 +105,15 @@ nav {
   text-transform: uppercase;
   letter-spacing: 0.12em;
 
-  transition: color 0.3s ease;
+  transition: color .3s ease;
 }
 
 .navlinks a:hover {
   color: #b7ff5a;
 }
 
-/* HERO */
-
 .hero {
   min-height: 100vh;
-
   padding: 150px 5vw 45px;
 
   display: flex;
@@ -87,6 +121,23 @@ nav {
   justify-content: center;
 
   position: relative;
+  z-index: 2;
+}
+
+.hero-line {
+  position: absolute;
+  width: 1px;
+  height: 110px;
+  left: 5vw;
+  top: 0;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #b7ff5a
+  );
+
+  opacity: .6;
 }
 
 .hero-kicker,
@@ -96,7 +147,11 @@ nav {
   font-family: "DM Mono", monospace;
   font-size: 11px;
 
-  letter-spacing: 0.16em;
+  letter-spacing: .16em;
+}
+
+.hero-kicker span {
+  color: #b7ff5a;
 }
 
 .hero-title {
@@ -109,8 +164,8 @@ nav {
   z-index: 2;
 
   font-size: clamp(70px, 15.5vw, 220px);
-  line-height: 0.76;
-  letter-spacing: -0.075em;
+  line-height: .76;
+  letter-spacing: -.075em;
   font-weight: 800;
 }
 
@@ -123,6 +178,11 @@ nav {
   -webkit-text-stroke: 1px #777;
 }
 
+.hero-title .outline:hover {
+  color: #b7ff5a;
+  -webkit-text-stroke-color: #b7ff5a;
+}
+
 .hero-bottom {
   position: relative;
   z-index: 2;
@@ -132,7 +192,7 @@ nav {
   align-items: flex-end;
 }
 
-.hero-bottom p {
+.hero-description {
   max-width: 430px;
 
   color: #aaa;
@@ -141,7 +201,7 @@ nav {
   line-height: 1.5;
 }
 
-.hero-bottom i,
+.hero-description i,
 em {
   color: #b7ff5a;
   font-style: normal;
@@ -160,59 +220,74 @@ em {
   text-decoration: none;
 
   transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease;
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease;
 }
 
 .circle:hover {
   background: #b7ff5a;
-  color: #080808;
+  color: #050505;
   transform: rotate(45deg);
 }
 
-/* BACKGROUND LIGHTS */
+.hero-status {
+  position: absolute;
+  right: 5vw;
+  bottom: 45px;
+
+  color: #666;
+
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: #b7ff5a;
+
+  box-shadow: 0 0 14px #b7ff5a;
+}
 
 .orb {
   position: absolute;
-
   border-radius: 50%;
-
-  filter: blur(90px);
-
-  opacity: 0.18;
-
+  filter: blur(100px);
   pointer-events: none;
 }
 
 .orb1 {
-  width: 420px;
-  height: 420px;
-
-  right: 0;
-  top: 20%;
-
-  background: #9dff50;
+  width: 450px;
+  height: 450px;
+  right: -100px;
+  top: 18%;
+  background: #a4ff55;
+  opacity: .12;
 }
 
 .orb2 {
-  width: 260px;
-  height: 260px;
-
-  left: 15%;
-  bottom: 10%;
-
-  background: #4b54ff;
+  width: 300px;
+  height: 300px;
+  left: 10%;
+  bottom: 5%;
+  background: #4d5cff;
+  opacity: .1;
 }
-
-/* SECTIONS */
 
 .section {
   max-width: 1500px;
-
   margin: auto;
-
   padding: 150px 5vw;
+  position: relative;
+  z-index: 2;
 }
 
 .aboutgrid {
@@ -220,7 +295,6 @@ em {
 
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-
   gap: 10vw;
 }
 
@@ -229,14 +303,13 @@ em {
   margin: 0;
 
   font-size: clamp(42px, 6vw, 88px);
-  line-height: 0.98;
+  line-height: .98;
 
-  letter-spacing: -0.05em;
+  letter-spacing: -.05em;
 }
 
 .aboutgrid p {
   color: #999;
-
   font-size: 16px;
   line-height: 1.9;
 
@@ -244,23 +317,35 @@ em {
   margin-bottom: 25px;
 }
 
-/* PROJECTS */
-
 .project {
   padding: 45px 0;
 
   display: grid;
   grid-template-columns: 80px 1fr 40px;
-
   gap: 30px;
 
   border-top: 1px solid #292929;
 
   align-items: start;
+
+  transition:
+    padding-left .4s ease,
+    border-color .4s ease;
 }
 
 .project:first-of-type {
   margin-top: 65px;
+}
+
+.project:hover {
+  padding-left: 20px;
+  border-color: #555;
+}
+
+.project-number {
+  color: #555;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
 }
 
 .project h3 {
@@ -269,10 +354,9 @@ em {
   font-size: clamp(30px, 4vw, 62px);
 
   line-height: 1;
+  letter-spacing: -.04em;
 
-  letter-spacing: -0.04em;
-
-  transition: color 0.3s ease;
+  transition: color .3s ease;
 }
 
 .project:hover h3 {
@@ -281,14 +365,17 @@ em {
 
 .project p {
   max-width: 620px;
-
   color: #999;
-
   line-height: 1.7;
 }
 
 .arrow {
   font-size: 25px;
+  transition: transform .3s ease;
+}
+
+.project:hover .arrow {
+  transform: translate(5px, -5px);
 }
 
 .tags {
@@ -310,8 +397,6 @@ em {
   font-weight: 400;
 }
 
-/* SKILLS */
-
 .skills {
   margin-top: 65px;
 
@@ -332,8 +417,8 @@ em {
   font-size: clamp(20px, 3vw, 38px);
 
   transition:
-    padding-left 0.3s ease,
-    color 0.3s ease;
+    padding-left .3s ease,
+    color .3s ease;
 }
 
 .skills div:hover {
@@ -342,18 +427,19 @@ em {
 }
 
 .skills small {
-  color: #666;
+  color: #555;
 
   font-family: "DM Mono", monospace;
   font-size: 10px;
 }
 
-/* CONTACT */
-
 .contact {
   padding: 170px 5vw 100px;
 
   border-top: 1px solid #292929;
+
+  position: relative;
+  z-index: 2;
 }
 
 .contact h2 {
@@ -361,9 +447,8 @@ em {
 
   font-size: clamp(65px, 12vw, 170px);
 
-  line-height: 0.8;
-
-  letter-spacing: -0.07em;
+  line-height: .8;
+  letter-spacing: -.07em;
 }
 
 .email {
@@ -375,7 +460,6 @@ em {
   text-decoration: none;
 
   border-bottom: 1px solid #555;
-
   padding-bottom: 8px;
 }
 
@@ -394,14 +478,12 @@ em {
 
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: .12em;
 }
 
 .social a:hover {
   color: #b7ff5a;
 }
-
-/* FOOTER */
 
 footer {
   padding: 30px 5vw;
@@ -418,8 +500,6 @@ footer {
 
   text-transform: uppercase;
 }
-
-/* MOBILE */
 
 @media (max-width: 700px) {
   nav {
@@ -442,10 +522,17 @@ footer {
 
   .hero-title {
     margin: 55px 0;
+    font-size: clamp(60px, 20vw, 100px);
   }
 
   .hero-bottom {
     align-items: flex-end;
+  }
+
+  .hero-status {
+    right: auto;
+    left: 5vw;
+    bottom: 25px;
   }
 
   .aboutgrid {
@@ -460,6 +547,10 @@ footer {
   .project {
     grid-template-columns: 35px 1fr 20px;
     gap: 12px;
+  }
+
+  .project:hover {
+    padding-left: 5px;
   }
 
   .project h3 {
