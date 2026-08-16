@@ -24,7 +24,7 @@ const projects = [
     number: "01",
     title: "Mirror Salon Studio",
     description:
-      "A premium responsive salon website designed with modern UI, service presentation, location information and a customer-focused experience.",
+      "A premium responsive salon website designed for a real client, combining modern UI, service presentation, location information and a smooth customer experience.",
     tags: ["Web Development", "UI/UX", "Responsive"],
     link: "https://pratik-salon-studio.emergent.host",
   },
@@ -32,17 +32,33 @@ const projects = [
     number: "02",
     title: "Image Salon",
     description:
-      "A modern salon website focused on visual presentation, services, contact information and a polished mobile-friendly interface.",
+      "A modern salon web experience focused on visual presentation, responsive layouts, service discovery and a polished mobile-first interface.",
     tags: ["React", "UI/UX", "Web Design"],
     link: "https://imagesalon.lovable.app",
   },
   {
     number: "03",
-    title: "Developer Portfolio",
+    title: "Mission Portfolio",
     description:
-      "A cinematic developer portfolio built around interactive space visuals, responsive design, GSAP motion and a NASA-inspired mission interface.",
+      "A cinematic developer experience inspired by space and mission-control interfaces, combining responsive design, GSAP animations and interactive visual systems.",
     tags: ["TypeScript", "GSAP", "Creative UI"],
     link: "https://methesanket.github.io/sanket-methe-dev/",
+  },
+  {
+    number: "04",
+    title: "Interactive Web Experience",
+    description:
+      "A responsive frontend project exploring creative layouts, interactive elements, visual hierarchy and smooth user experiences across different screen sizes.",
+    tags: ["JavaScript", "CSS", "Responsive UI"],
+    link: "https://methesanket.github.io/PORTFOLIO/",
+  },
+  {
+    number: "05",
+    title: "Digital Identity",
+    description:
+      "A professional web experience focused on personal branding, clean interface design and building a strong digital presence across desktop and mobile.",
+    tags: ["Frontend", "Web Design", "UI/UX"],
+    link: "https://methesanket.github.io/sanket-methe-portfolio/",
   },
 ];
 
@@ -227,7 +243,7 @@ export default function App() {
             <a href="#about">01 About</a>
             <a href="#work">02 Work</a>
             <a href="#skills">03 Skills</a>
-            <a href="#contact">04 Contact</a>
+            <a href="#contact">05 Contact</a>
           </div>
         </nav>
 
@@ -403,7 +419,9 @@ export default function App() {
                   <strong>Certification</strong>
                 </p>
 
-                <p>Full Stack Web Development</p>
+                <p>
+                  Full Stack Web Development
+                </p>
               </div>
             </div>
           </section>
