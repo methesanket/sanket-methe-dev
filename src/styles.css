@@ -1255,3 +1255,252 @@ footer {
     display: none;
   }
 }
+/* =========================
+   MISSION CONTROL BOOT
+========================= */
+
+.boot-screen {
+  position: fixed;
+  inset: 0;
+
+  z-index: 99999;
+
+  background: #020304;
+  color: #f3f1eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.boot-grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(183, 255, 90, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(183, 255, 90, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 45px 45px;
+
+  mask-image: radial-gradient(
+    circle at center,
+    black,
+    transparent 75%
+  );
+}
+
+.boot-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(900px, 85vw);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 420px;
+}
+
+.boot-top,
+.boot-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.16em;
+
+  color: #666;
+}
+
+.boot-center {
+  text-align: center;
+}
+
+.boot-ring {
+  width: 130px;
+  height: 130px;
+
+  margin: 0 auto 35px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(183, 255, 90, 0.25);
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+
+  animation: bootSpin 4s linear infinite;
+}
+
+.boot-ring::before,
+.boot-ring::after {
+  content: "";
+
+  position: absolute;
+
+  border: 1px solid rgba(183, 255, 90, 0.18);
+
+  border-radius: 50%;
+}
+
+.boot-ring::before {
+  inset: 12px;
+}
+
+.boot-ring::after {
+  inset: 25px;
+}
+
+.boot-core {
+  width: 55px;
+  height: 55px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: #b7ff5a;
+
+  color: #020304;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.05em;
+
+  animation: bootCounterSpin 4s linear infinite;
+}
+
+.boot-title {
+  margin: 0;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+
+  letter-spacing: 0.25em;
+
+  color: #aaa;
+}
+
+.boot-status {
+  margin-top: 15px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+
+  color: #555;
+}
+
+.boot-status span {
+  color: #b7ff5a;
+
+  margin-left: 8px;
+
+  animation: bootBlink 0.8s infinite;
+}
+
+.boot-progress {
+  height: 2px;
+
+  width: 100%;
+
+  background: #181818;
+
+  overflow: hidden;
+}
+
+.boot-progress-fill {
+  height: 100%;
+
+  background: #b7ff5a;
+
+  box-shadow:
+    0 0 12px rgba(183, 255, 90, 0.8);
+
+  transition: width 0.05s linear;
+}
+
+.boot-meta {
+  margin-top: 10px;
+}
+
+.boot-meta strong {
+  color: #b7ff5a;
+
+  font-weight: 500;
+}
+
+@keyframes bootSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bootCounterSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes bootBlink {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .boot-content {
+    width: 85vw;
+    min-height: 350px;
+  }
+
+  .boot-ring {
+    width: 105px;
+    height: 105px;
+  }
+
+  .boot-core {
+    width: 45px;
+    height: 45px;
+  }
+
+  .boot-title {
+    font-size: 9px;
+  }
+}
