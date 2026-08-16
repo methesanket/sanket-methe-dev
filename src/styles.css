@@ -1504,3 +1504,27 @@ footer {
     font-size: 9px;
   }
 }
+.project {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.project p {
+  color: #999;
+}
+
+.project:hover {
+  color: inherit;
+}
+
+.project:hover .arrow {
+  color: #b7ff5a;
+  transform: translate(4px, -4px);
+}
+
+.arrow {
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
