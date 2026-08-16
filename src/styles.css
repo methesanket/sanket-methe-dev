@@ -12,7 +12,7 @@ body {
   margin: 0;
   background: #020304;
   color: #f5f5f2;
-  font-family: "Manrope", sans-serif;
+  font-family: "Manrope", Arial, sans-serif;
 }
 
 a {
@@ -25,11 +25,15 @@ a {
   background:
     radial-gradient(
       circle at 50% 40%,
-      rgba(100, 130, 255, 0.08),
+      rgba(80, 110, 255, 0.08),
       transparent 35%
     ),
     #020304;
 }
+
+/* =========================
+   SPACE BACKGROUND
+========================= */
 
 .space-canvas {
   position: fixed;
@@ -48,12 +52,12 @@ a {
 
   background:
     linear-gradient(
-      rgba(255,255,255,0.025) 1px,
+      rgba(255, 255, 255, 0.025) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(255,255,255,0.025) 1px,
+      rgba(255, 255, 255, 0.025) 1px,
       transparent 1px
     );
 
@@ -62,9 +66,13 @@ a {
   mask-image: linear-gradient(
     to bottom,
     black,
-    transparent 80%
+    transparent 85%
   );
 }
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
   position: absolute;
@@ -72,26 +80,27 @@ nav {
   left: 0;
   right: 0;
 
+  z-index: 20;
+
   padding: 30px 5vw;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
-  z-index: 20;
+  justify-content: space-between;
 }
 
 .logo {
+  color: #ffffff;
+  text-decoration: none;
+
   font-size: 25px;
   font-weight: 800;
-  text-decoration: none;
-  letter-spacing: -.05em;
+
+  letter-spacing: -0.05em;
 }
 
-.logo span,
-em {
+.logo span {
   color: #b7ff5a;
-  font-style: normal;
 }
 
 .navlinks {
@@ -101,20 +110,25 @@ em {
 
 .navlinks a {
   color: #666;
+
   text-decoration: none;
 
   font-family: "DM Mono", monospace;
   font-size: 9px;
 
   text-transform: uppercase;
-  letter-spacing: .12em;
+  letter-spacing: 0.12em;
 
-  transition: color .25s ease;
+  transition: color 0.25s ease;
 }
 
 .navlinks a:hover {
   color: #b7ff5a;
 }
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
   min-height: 100vh;
@@ -126,11 +140,13 @@ em {
   justify-content: center;
 
   position: relative;
+
   z-index: 5;
 }
 
 .mission-label {
   position: absolute;
+
   top: 110px;
   left: 5vw;
 
@@ -142,7 +158,8 @@ em {
 
   font-family: "DM Mono", monospace;
   font-size: 9px;
-  letter-spacing: .15em;
+
+  letter-spacing: 0.15em;
 }
 
 .live-dot {
@@ -153,7 +170,9 @@ em {
 
   background: #b7ff5a;
 
-  box-shadow: 0 0 12px #b7ff5a;
+  box-shadow:
+    0 0 8px #b7ff5a,
+    0 0 18px rgba(183, 255, 90, 0.5);
 }
 
 .hero-content {
@@ -167,12 +186,16 @@ em {
   font-family: "DM Mono", monospace;
   font-size: 10px;
 
-  letter-spacing: .15em;
+  letter-spacing: 0.15em;
 }
 
 .eyebrow span {
   color: #b7ff5a;
 }
+
+/* =========================
+   NAME
+========================= */
 
 .hero-title {
   margin: 45px 0;
@@ -180,30 +203,54 @@ em {
   display: flex;
   flex-direction: column;
 
+  position: relative;
+
   font-size: clamp(70px, 15vw, 210px);
 
-  line-height: .76;
+  line-height: 0.76;
 
-  letter-spacing: -.08em;
+  letter-spacing: -0.08em;
 
   font-weight: 800;
+
+  z-index: 5;
 }
 
 .hero-title span {
   display: block;
+
+  white-space: nowrap;
 }
 
+.hero-title span:first-child {
+  color: #ffffff;
+
+  text-shadow:
+    0 0 30px rgba(255, 255, 255, 0.05);
+}
+
+/*
+   METHE
+   Bright green so surname
+   is always clearly visible.
+*/
+
 .hero-title .outline {
-  color: transparent;
+  color: #b7ff5a;
 
-  -webkit-text-stroke: 1px #666;
+  -webkit-text-stroke: 0;
 
-  transition: .4s ease;
+  text-shadow:
+    0 0 15px rgba(183, 255, 90, 0.2),
+    0 0 40px rgba(183, 255, 90, 0.08);
 }
 
 .hero-title .outline:hover {
-  color: #b7ff5a;
-  -webkit-text-stroke-color: #b7ff5a;
+  color: #d2ff9b;
+
+  text-shadow:
+    0 0 20px rgba(183, 255, 90, 0.5),
+    0 0 60px rgba(183, 255, 90, 0.2);
 }
 
 .hero-subtitle {
@@ -212,7 +259,18 @@ em {
   color: #aaa;
 
   font-size: clamp(16px, 2vw, 23px);
+
+  line-height: 1.5;
 }
+
+.hero-subtitle em {
+  color: #b7ff5a;
+  font-style: normal;
+}
+
+/* =========================
+   ORBIT
+========================= */
 
 .orbit-system {
   position: absolute;
@@ -225,7 +283,7 @@ em {
 
   transform: translateY(-50%);
 
-  opacity: .55;
+  opacity: 0.55;
 
   pointer-events: none;
 }
@@ -235,19 +293,19 @@ em {
 
   inset: 0;
 
-  border: 1px solid rgba(183,255,90,.18);
+  border: 1px solid rgba(183, 255, 90, 0.18);
 
   border-radius: 50%;
 
-  transform: rotate(20deg) scaleY(.35);
+  transform: rotate(20deg) scaleY(0.35);
 }
 
 .orbit-ring.reverse {
   inset: 12%;
 
-  border-color: rgba(255,255,255,.12);
+  border-color: rgba(255, 255, 255, 0.12);
 
-  transform: rotate(-20deg) scaleY(.35);
+  transform: rotate(-20deg) scaleY(0.35);
 }
 
 .planet {
@@ -266,9 +324,13 @@ em {
   background: #b7ff5a;
 
   box-shadow:
-    0 0 20px rgba(183,255,90,.8),
-    0 0 70px rgba(183,255,90,.25);
+    0 0 20px rgba(183, 255, 90, 0.8),
+    0 0 70px rgba(183, 255, 90, 0.25);
 }
+
+/* =========================
+   MISSION DATA
+========================= */
 
 .mission-data {
   position: absolute;
@@ -286,6 +348,7 @@ em {
 .mission-data div {
   display: flex;
   flex-direction: column;
+
   gap: 5px;
 }
 
@@ -294,7 +357,8 @@ em {
 
   font-family: "DM Mono", monospace;
   font-size: 8px;
-  letter-spacing: .12em;
+
+  letter-spacing: 0.12em;
 }
 
 .mission-data strong {
@@ -302,12 +366,17 @@ em {
 
   font-family: "DM Mono", monospace;
   font-size: 9px;
+
   font-weight: 400;
 }
 
 .mission-data div:first-child strong {
   color: #b7ff5a;
 }
+
+/* =========================
+   SCROLL
+========================= */
 
 .scroll-indicator {
   position: absolute;
@@ -317,16 +386,17 @@ em {
 
   display: flex;
   align-items: center;
-  gap: 15px;
 
-  text-decoration: none;
+  gap: 15px;
 
   color: #666;
 
   font-family: "DM Mono", monospace;
   font-size: 8px;
 
-  letter-spacing: .12em;
+  letter-spacing: 0.12em;
+
+  text-decoration: none;
 }
 
 .scroll-indicator b {
@@ -337,12 +407,28 @@ em {
   place-items: center;
 
   border: 1px solid #333;
+
   border-radius: 50%;
 
   color: #b7ff5a;
 
   font-size: 15px;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
+
+.scroll-indicator:hover b {
+  background: #b7ff5a;
+  color: #020304;
+
+  transform: translateY(4px);
+}
+
+/* =========================
+   SECTIONS
+========================= */
 
 .section {
   max-width: 1500px;
@@ -352,6 +438,7 @@ em {
   padding: 160px 5vw;
 
   position: relative;
+
   z-index: 5;
 }
 
@@ -361,7 +448,7 @@ em {
   font-family: "DM Mono", monospace;
   font-size: 9px;
 
-  letter-spacing: .16em;
+  letter-spacing: 0.16em;
 }
 
 .aboutgrid {
@@ -380,9 +467,16 @@ em {
 
   font-size: clamp(42px, 6vw, 88px);
 
-  line-height: .98;
+  line-height: 0.98;
 
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
+}
+
+.aboutgrid h2 em,
+.big em {
+  color: #b7ff5a;
+
+  font-style: normal;
 }
 
 .aboutgrid p {
@@ -392,6 +486,10 @@ em {
 
   font-size: 16px;
 }
+
+/* =========================
+   PROJECTS
+========================= */
 
 .project {
   padding: 45px 0;
@@ -404,7 +502,11 @@ em {
 
   border-top: 1px solid #222;
 
-  transition: .35s ease;
+  align-items: start;
+
+  transition:
+    padding-left 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .project:first-of-type {
@@ -421,15 +523,22 @@ em {
   color: #555;
 
   font-family: "DM Mono", monospace;
+
   font-size: 10px;
 }
 
 .project h3 {
   margin: 0 0 18px;
 
+  color: #f5f5f2;
+
   font-size: clamp(30px, 4vw, 62px);
 
-  letter-spacing: -.04em;
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+
+  transition: color 0.3s ease;
 }
 
 .project:hover h3 {
@@ -445,11 +554,24 @@ em {
 }
 
 .arrow {
+  color: #777;
+
   font-size: 25px;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.project:hover .arrow {
+  color: #b7ff5a;
+
+  transform: translate(5px, -5px);
 }
 
 .tags {
   display: flex;
+
   flex-wrap: wrap;
 
   gap: 8px;
@@ -471,6 +593,10 @@ em {
   font-weight: 400;
 }
 
+/* =========================
+   SKILLS
+========================= */
+
 .skills {
   margin-top: 65px;
 
@@ -490,13 +616,18 @@ em {
 
   border-bottom: 1px solid #222;
 
+  color: #eee;
+
   font-size: clamp(20px, 3vw, 38px);
 
-  transition: .3s ease;
+  transition:
+    padding-left 0.3s ease,
+    color 0.3s ease;
 }
 
 .skills div:hover {
   padding-left: 15px;
+
   color: #b7ff5a;
 }
 
@@ -504,8 +635,13 @@ em {
   color: #555;
 
   font-family: "DM Mono", monospace;
+
   font-size: 9px;
 }
+
+/* =========================
+   CONTACT
+========================= */
 
 .contact {
   padding: 170px 5vw 100px;
@@ -513,6 +649,7 @@ em {
   border-top: 1px solid #222;
 
   position: relative;
+
   z-index: 5;
 }
 
@@ -521,12 +658,20 @@ em {
 
   font-size: clamp(65px, 12vw, 170px);
 
-  line-height: .8;
+  line-height: 0.8;
 
-  letter-spacing: -.07em;
+  letter-spacing: -0.07em;
+}
+
+.contact h2 em {
+  color: #b7ff5a;
+
+  font-style: normal;
 }
 
 .email {
+  color: #eee;
+
   font-family: "DM Mono", monospace;
 
   font-size: clamp(15px, 2vw, 24px);
@@ -536,6 +681,16 @@ em {
   border-bottom: 1px solid #444;
 
   padding-bottom: 8px;
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.email:hover {
+  color: #b7ff5a;
+
+  border-color: #b7ff5a;
 }
 
 .social {
@@ -553,16 +708,22 @@ em {
 
   font-size: 10px;
 
-  text-transform: uppercase;
-
   text-decoration: none;
 
-  letter-spacing: .12em;
+  text-transform: uppercase;
+
+  letter-spacing: 0.12em;
+
+  transition: color 0.25s ease;
 }
 
 .social a:hover {
   color: #b7ff5a;
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
   padding: 30px 5vw;
@@ -579,8 +740,16 @@ footer {
 
   font-size: 8px;
 
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
+
+  position: relative;
+
+  z-index: 5;
 }
+
+/* =========================
+   TABLET
+========================= */
 
 @media (max-width: 800px) {
   .orbit-system {
@@ -589,7 +758,7 @@ footer {
 
     right: -100px;
 
-    opacity: .3;
+    opacity: 0.3;
   }
 
   .mission-data {
@@ -597,7 +766,19 @@ footer {
   }
 }
 
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 600px) {
+  nav {
+    padding: 25px 5vw;
+  }
+
+  .navlinks {
+    gap: 14px;
+  }
+
   .navlinks a:nth-child(2),
   .navlinks a:nth-child(3) {
     display: none;
@@ -605,11 +786,45 @@ footer {
 
   .hero {
     min-height: 100svh;
+
     padding-top: 130px;
   }
 
+  .mission-label {
+    top: 95px;
+
+    font-size: 8px;
+  }
+
   .hero-title {
-    font-size: clamp(60px, 20vw, 100px);
+    margin: 45px 0;
+
+    font-size: clamp(
+      60px,
+      20vw,
+      105px
+    );
+
+    line-height: 0.8;
+
+    letter-spacing: -0.075em;
+  }
+
+  .hero-title span {
+    white-space: nowrap;
+  }
+
+  .hero-title .outline {
+    color: #b7ff5a;
+
+    -webkit-text-stroke: 0;
+
+    text-shadow:
+      0 0 12px rgba(183, 255, 90, 0.2);
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
   }
 
   .orbit-system {
@@ -620,15 +835,25 @@ footer {
 
     top: 42%;
 
-    opacity: .2;
+    opacity: 0.2;
   }
 
   .mission-data {
+    left: 5vw;
+
     bottom: 35px;
+
+    gap: 18px;
   }
 
   .mission-data div:nth-child(2) {
     display: none;
+  }
+
+  .scroll-indicator {
+    right: 5vw;
+
+    bottom: 35px;
   }
 
   .scroll-indicator span {
@@ -637,11 +862,17 @@ footer {
 
   .aboutgrid {
     grid-template-columns: 1fr;
+
     gap: 35px;
   }
 
   .section {
     padding: 100px 5vw;
+  }
+
+  .aboutgrid h2,
+  .big {
+    font-size: clamp(42px, 12vw, 70px);
   }
 
   .project {
@@ -658,30 +889,57 @@ footer {
     font-size: 29px;
   }
 
+  .project p {
+    font-size: 14px;
+  }
+
   .skills {
     grid-template-columns: 1fr;
+  }
+
+  .skills div {
+    font-size: 25px;
   }
 
   .contact {
     padding: 110px 5vw 80px;
   }
 
+  .contact h2 {
+    margin: 55px 0;
+
+    font-size: clamp(
+      60px,
+      17vw,
+      110px
+    );
+  }
+
   .social {
     margin-top: 55px;
+
+    flex-wrap: wrap;
   }
 
   footer {
     flex-direction: column;
+
     gap: 15px;
   }
 }
+
+/* =========================
+   REDUCED MOTION
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  * {
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     transition: none !important;
   }
