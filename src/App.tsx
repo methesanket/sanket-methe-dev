@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import gsap from "gsap";
-
 const skills = [
   "React",
   "JavaScript",
@@ -39,24 +36,6 @@ const projects = [
 ];
 
 export default function App() {
-  useEffect(() => {
-    gsap.from(".hero-kicker", {
-      y: 30,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    gsap.from(".hero-title span", {
-      y: 120,
-      opacity: 0,
-      stagger: 0.08,
-      duration: 1.2,
-      ease: "power4.out",
-      delay: 0.15,
-    });
-  }, []);
-
   return (
     <div className="site">
       <nav>
@@ -73,7 +52,6 @@ export default function App() {
       </nav>
 
       <main>
-        {/* HERO */}
         <section className="hero">
           <div className="orb orb1" />
           <div className="orb orb2" />
@@ -98,7 +76,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* ABOUT */}
         <section id="about" className="section">
           <p className="label">01 — ABOUT</p>
 
@@ -124,7 +101,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* PROJECTS */}
         <section id="work" className="section work">
           <p className="label">02 — SELECTED WORK</p>
 
@@ -149,7 +125,6 @@ export default function App() {
           ))}
         </section>
 
-        {/* SKILLS */}
         <section id="skills" className="section">
           <p className="label">03 — TOOLKIT</p>
 
@@ -160,14 +135,15 @@ export default function App() {
           <div className="skills">
             {skills.map((skill, index) => (
               <div key={skill}>
-                <small>0{index + 1}</small>
+                <small>
+                  {String(index + 1).padStart(2, "0")}
+                </small>
                 {skill}
               </div>
             ))}
           </div>
         </section>
 
-        {/* CONTACT */}
         <section id="contact" className="contact">
           <p className="label">04 — CONTACT</p>
 
@@ -177,13 +153,30 @@ export default function App() {
             <em>something.</em>
           </h2>
 
-          <a className="email" href="mailto:sanket.methe@example.com">
+          <a
+            className="email"
+            href="mailto:sanket.methe@example.com"
+          >
             sanket.methe@example.com ↗
           </a>
 
           <div className="social">
-            <a href="https://github.com/methesanket">GitHub</a>
-            <a href="https://www.linkedin.com/">LinkedIn</a>
+            <a
+              href="https://github.com/methesanket"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
+
             <a href="#">Resume</a>
           </div>
         </section>
