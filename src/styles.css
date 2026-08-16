@@ -1075,3 +1075,183 @@ footer {
     transform: translateY(45vh);
   }
 }
+/* =========================
+   NASA HUD
+========================= */
+
+.hero::before {
+  content: "SYS // ONLINE    ◉    NAV // ACTIVE";
+
+  position: absolute;
+
+  right: 5vw;
+  top: 110px;
+
+  color: rgba(183, 255, 90, 0.45);
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 0.14em;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+/* Corner brackets */
+
+.hero {
+  border-left: 1px solid rgba(183, 255, 90, 0.08);
+  border-right: 1px solid rgba(183, 255, 90, 0.08);
+}
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 70px;
+  height: 70px;
+
+  right: 5vw;
+  bottom: 35px;
+
+  border-right: 1px solid rgba(183, 255, 90, 0.25);
+  border-bottom: 1px solid rgba(183, 255, 90, 0.25);
+
+  pointer-events: none;
+}
+
+/* Mission data glow */
+
+.mission-data strong {
+  transition: color 0.25s ease;
+}
+
+.mission-data div:hover strong {
+  color: #b7ff5a;
+}
+
+/* HUD label animation */
+
+.mission-label {
+  animation: hudBlink 3s ease-in-out infinite;
+}
+
+@keyframes hudBlink {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Faster scan */
+
+@keyframes scanLine {
+  0% {
+    opacity: 0;
+    transform: translateY(-45vh);
+  }
+
+  45% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(45vh);
+  }
+}
+
+/* =========================
+   PROJECT HUD
+========================= */
+
+.project {
+  position: relative;
+}
+
+.project::after {
+  content: "VIEW MISSION →";
+
+  position: absolute;
+
+  right: 40px;
+  bottom: 12px;
+
+  color: #444;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+
+  opacity: 0;
+
+  transform: translateX(-10px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.project:hover::after {
+  opacity: 1;
+
+  transform: translateX(0);
+
+  color: #b7ff5a;
+}
+
+/* =========================
+   SECTION TRANSITIONS
+========================= */
+
+.section {
+  position: relative;
+}
+
+.section::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 5vw;
+
+  width: 35px;
+  height: 1px;
+
+  background: #b7ff5a;
+
+  opacity: 0.5;
+}
+
+/* =========================
+   MOBILE HUD
+========================= */
+
+@media (max-width: 600px) {
+  .hero::before {
+    right: 5vw;
+    top: 95px;
+
+    font-size: 7px;
+  }
+
+  .hero {
+    border-left: none;
+    border-right: none;
+  }
+
+  .project::after {
+    display: none;
+  }
+}
