@@ -24,7 +24,7 @@ const projects = [
     number: "01",
     title: "Mirror Salon Studio",
     description:
-      "A premium responsive salon website designed with modern UI, service presentation, location information and customer-focused experience.",
+      "A premium responsive salon website designed with modern UI, service presentation, location information and a customer-focused experience.",
     tags: ["Web Development", "UI/UX", "Responsive"],
     link: "https://pratik-salon-studio.emergent.host",
   },
@@ -32,7 +32,7 @@ const projects = [
     number: "02",
     title: "Image Salon",
     description:
-      "A modern salon website experience focused on visual presentation, services, contact information and a polished mobile-friendly interface.",
+      "A modern salon website focused on visual presentation, services, contact information and a polished mobile-friendly interface.",
     tags: ["React", "UI/UX", "Web Design"],
     link: "https://imagesalon.lovable.app",
   },
@@ -296,9 +296,10 @@ export default function App() {
 
               <div>
                 <p>
-                  I'm Sanket Methe, a BSc IT graduate from Pillai University
-                  with a focus on full-stack web development, software testing,
-                  AI/ML and practical technology.
+                  I'm Sanket Methe, a BSc IT student at Pillai University,
+                  graduating in 2026, with a focus on full-stack web
+                  development, software testing, AI/ML and practical
+                  technology.
                 </p>
 
                 <p>
@@ -394,17 +395,15 @@ export default function App() {
 
                 <p>
                   Worked on practical web development projects while
-                  strengthening frontend, backend and development workflow
-                  skills.
+                  strengthening frontend, development workflow and
+                  problem-solving skills.
                 </p>
 
                 <p>
                   <strong>Certification</strong>
                 </p>
 
-                <p>
-                  Full Stack Web Development
-                </p>
+                <p>Full Stack Web Development</p>
               </div>
             </div>
           </section>
@@ -419,6 +418,13 @@ export default function App() {
               <br />
               <em>something.</em>
             </h2>
+
+            <a
+              className="email"
+              href="mailto:methesanket@gmail.com"
+            >
+              methesanket@gmail.com ↗
+            </a>
 
             <div className="social">
               <a
@@ -435,6 +441,10 @@ export default function App() {
                 rel="noreferrer"
               >
                 LinkedIn ↗
+              </a>
+
+              <a href="mailto:methesanket@gmail.com">
+                Email ↗
               </a>
             </div>
           </section>
